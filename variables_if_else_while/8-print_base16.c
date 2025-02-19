@@ -11,13 +11,13 @@ int main(void)
 	char c;
 	int n;
 
-	for (c = 'a'; c <= 'f'; c++)
-	{
-		putchar(c);
-	}
 	for (n = 48; n <= 57; n++)
 	{
 		putchar(n);
+	}
+	for (c = 'a'; c <= 'f'; c++)
+	{
+		putchar(c);
 	}
 
 	putchar('\n');
