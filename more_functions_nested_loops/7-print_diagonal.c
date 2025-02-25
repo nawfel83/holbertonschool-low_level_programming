@@ -1,29 +1,30 @@
-#include "main.h"
-
+#include <unistd.h>
+#include <stdio.h>
 /**
- * print_diagonal - prints diagonal line n times.
- * @n: times diagonal line is printed.
- * Return: no return.
+ * print_diagonal - Prints the alphabet in lowercase and then in uppercase.
+ *
+ * Return: Always 0.
+ *
+ *@n: frjfnuhuyguigujkns
  */
 void print_diagonal(int n)
 {
-	if (n <= 0)
-	{
-		_putchar('\n');
-	} else
-	{
-		int i, j;
-
-		for (i = 0; i < n; i++)
-		{
-			for (j = 0; j < n; j++)
-			{
-				if (j == i)
-					_putchar('\\');
-				else if (j < i)
-					_putchar(' ');
-			}
-			_putchar('\n');
-		}
-	}
+        int y;
+        int x;
+        if (n <= 0)
+        {
+        _putchar('\n');
+        }
+        else
+        {
+        for (y = 0; y < n; y++)
+        {
+        for (x = 0; x < y; x++)
+        {
+        _putchar(32);
+        }
+        _putchar(92);
+        _putchar('\n');
+        }
+        }
 }
