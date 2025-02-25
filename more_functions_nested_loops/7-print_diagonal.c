@@ -1,12 +1,14 @@
 #include <unistd.h>
 #include <stdio.h>
+
 /**
- * print_diagonal - Prints the alphabet in lowercase and then in uppercase.
+ * print_diagonal - Prints a diagonal line using '\' character.
+ * @n: The number of lines in the diagonal.
  *
- * Return: Always 0.
- *
- *@n: frjfnuhuyguigujkns
+ * Description: Each line starts with an increasing number of spaces
+ * followed by a '\' character. If `n` is 0 or less, only a newline is printed.
  */
+
 void print_diagonal(int n)
 {
         int y;
