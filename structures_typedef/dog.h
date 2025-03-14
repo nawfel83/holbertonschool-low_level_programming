@@ -17,8 +17,6 @@ struct dog
 	float age;
 };
 
-void print_dog(struct dog *d);
-
 /**
  * dog_t - New type name for struct dog
  */
