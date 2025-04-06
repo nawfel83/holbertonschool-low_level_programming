@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+#include <stddef.h>
 
 /**
 * binary_to_uint - that converts a binary number to an unsigned int
