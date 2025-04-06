@@ -1,52 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "main.h"
 #include <fcntl.h>
 
 /**
- * read_textfile - reads a text file and prints it to the POSIX standard output
- * @filename: the name of the file to read
- * @letters: the number of letters it should read and print
- *
- * Return: the actual number of letters it could read and print
- *         0 if the file can not be opened or read, or if filename is NULL
- *         0 if write fails or does not write the expected amount of bytes
- */
-
-ssize_t read_textfile(const char *filename, size_t letters)
+* create_file - that creates a file
+*
+* @filename: name of the new file
+* @text_content: content of the new file
+*
+* Return: 1 on success, -1 on failure
+*/
+int create_file(const char *filename, char *text_content)
 {
-	int fd;
-	char *buffer;
-	ssize_t bytes_read, bytes_written;
+	int fd, i = 0;
+
+	ssize_t bytesWritten;
 
 	if (filename == NULL)
-		return (0);
+		return (-1);
 
-	fd = open(filename, O_RDONLY);
+	if (text_content == NULL)
+		text_content = "";
+
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd == -1)
-		return (0);
-
-	buffer = malloc(sizeof(char) * letters);
-	if (buffer == NULL)
 	{
 		close(fd);
-		return (0);
+		return (-1);
 	}
 
-	bytes_read = read(fd, buffer, letters);
-	if (bytes_read == 0)
+	while (text_content[i])
+		i++;
+
+	bytesWritten = write(fd, text_content, i);
+
+	if (bytesWritten == -1)
 	{
-		free(buffer);
 		close(fd);
-		return (0);
+		return (-1);
 	}
-
-	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
-	free(buffer);
 	close(fd);
-
-	if (bytes_written != bytes_read)
-		return (0);
-
-	return (bytes_written);
+	return (1);
 }
